@@ -2,7 +2,7 @@
 
 To use the twobody.py script,
 
-Firstly, you should type in Python interpreter:
+Firstly, you should type in:
 python twobody.py > results.txt
 
 Then, you can plot the output using the plot script by typing:
