@@ -25,8 +25,7 @@ def halfstep(dt, x, v): #function to find half-step
 def UpdateVel(dt, v, a):
     return v + a*dt
 
-def print_values(t, RX, RY):
-    print(t, end = ' ')
+def print_values(RX, RY):
     print(RX[0],RX[1], end = ' ')
     print(RY[0],RY[1], end = ' ')
     print()
@@ -41,16 +40,16 @@ prst = 1 #printstep
 #initial configuration
 t = 0.0
 
-m1 = 1.9891e30  #mass of Sun 
+m1 = 1.9891e30  #mass of Sun in terms of kg
 RX = numpy.array([0, 0])  #Sun is stationary at the origin
 VX = numpy.array([0,0])
 
 
-m2 =  5.972e24 #mass of Earth
+m2 =  5.972e24 #mass of Earth in terms of kg
 RY = numpy.array([1.4710e11, 0])
 VY = numpy.array([0,3.0287e4]) #in terms of m/s
 
-print_values(t, RX, RY) #printing initial values
+print_values(RX, RY) #printing initial values
 
 
 #Leapfrog Integration 
@@ -73,7 +72,7 @@ while t < tend:
     if (step%prst) == 0:
         RX = halfstep(dt, RX, VX)
         RY = halfstep(dt, RY, VY)
-        print_values(t, RX, RY)
+        print_values(RX, RY)
         RX = halfstep(dt, RX, VX)
         RY = halfstep(dt, RY, VY)
     else:
@@ -87,4 +86,4 @@ ay = a_m2(RX,RY)
 VX += ax * dt/2
 VY += ay * dt/2
 
-print_values(t, RX, RY) 
+print_values(RX, RY) 
